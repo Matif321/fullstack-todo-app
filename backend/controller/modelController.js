@@ -32,20 +32,20 @@ export const createTodo = async (req, res) => {
 };
 
 
-// // Get All Todos
-// export const getTodo = async (req, res) => {
-//     try {
-//         const todos = await Model.find();
+// Get All Todos
+export const getTodo = async (req, res) => {
+    try {
+        const todos = await Model.find();
 
-//         res.status(200).json({
-//             success: true,
-//             data: todos
-//         });
+        res.status(200).json({
+            success: true,
+            data: todos
+        });
 
-//     } catch (error) {
-//         res.status(500).json({
-//             success: false,
-//             message: error.message
-//         });
-//     }
-// };
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
