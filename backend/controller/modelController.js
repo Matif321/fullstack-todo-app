@@ -49,3 +49,35 @@ export const getTodo = async (req, res) => {
         });
     }
 };
+
+export const updateTodo = async (req, res) => {
+    try {
+        const { id } = req.body
+
+        const updateTodo = await findByIdAndUpdate(
+            id,
+            req.body,
+            {
+                new: true
+
+            }
+        );
+        res.status(200).json({
+            success: true,
+            data: updateTodo
+
+        })
+
+
+
+
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+
+    }
+
+}
