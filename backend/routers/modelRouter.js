@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post("/create", createTodo);
 router.get("/get", getTodo)
-router.put("/update", updateTodo)
+// router.put("/,:id", updateTodo)
+router.put("/:id", updateTodo);
 
 
 export default router;

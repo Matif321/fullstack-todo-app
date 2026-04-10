@@ -52,32 +52,30 @@ export const getTodo = async (req, res) => {
 
 export const updateTodo = async (req, res) => {
     try {
-        const { id } = req.body
+        const { id } = req.params;
 
-        const updateTodo = await findByIdAndUpdate(
+        const updatedTodo = await Model.findByIdAndUpdate(
             id,
             req.body,
-            {
-                new: true
-
-            }
+            { new: true }
         );
+
+        if (!updatedTodo) {
+            return res.status(404).json({
+                success: false,
+                message: "Todo not found"
+            });
+        }
+
         res.status(200).json({
             success: true,
-            data: updateTodo
-
-        })
-
-
-
-
+            data: updatedTodo
+        });
 
     } catch (error) {
         res.status(500).json({
             success: false,
             message: error.message
-        })
-
+        });
     }
-
-}
+};
