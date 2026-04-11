@@ -79,3 +79,39 @@ export const updateTodo = async (req, res) => {
         });
     }
 };
+
+// export const deleteTodo = async (req, res) => {
+//     try {
+
+//         const{id}=req.body,
+
+
+
+//     } catch (error) {
+
+//         res.status.json({
+//             success: true,
+//             message: error.message
+//         })
+
+//     }
+// }
+export const deleteTodo = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        await Model.findByIdAndDelete(id);
+
+        res.status(200).json({
+            success: true,
+            message: "Todo deleted"
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
